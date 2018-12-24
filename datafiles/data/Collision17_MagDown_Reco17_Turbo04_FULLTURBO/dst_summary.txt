@@ -1,0 +1,79 @@
+ +--------------------------------------------------------------------------------------------------------+
+ | Location                                        |   Total  |       Mean      |   rms   |  min |   max  |
+ +--------------------------------------------------------------------------------------------------------+
+ |  Calo/RawEvent                                  |     5000 |      50         |         |      |        |
+ |  HC/RawEvent                                    |      100 |       1         |         |      |        |
+ |  Muon/RawEvent                                  |     1400 |      14         |         |      |        |
+ |  Rec/Header                                     |      100 |       1         |         |      |        |
+ |  Rec/Status                                     |      100 |       1         |         |      |        |
+ |  Rec/Summary                                    |      100 |       1         |         |      |        |
+ |  Rich/RawEvent                                  |     2400 |      24         |         |      |        |
+ |  Tracker/RawEvent                               |    13800 |     138         |         |      |        |
+ |  Trigger/RawEvent                               |     1800 |      18         |         |      |        |
+ |  Turbo/Hlt2/pRec/Downstream/PID/MuonSegments    |      138 |     1.4+-0.4    | 3.6     |    0 | 28     |
+ |  Turbo/Hlt2/pRec/Downstream/Protos              |      291 |     2.9+-0.7    | 6.9     |    0 | 41     |
+ |  Turbo/Hlt2/pRec/Downstream/RichPIDs            |      278 |     2.8+-0.7    | 6.7     |    0 | 38     |
+ |  Turbo/Hlt2/pRec/Downstream/Tracks              |      291 |     2.9+-0.7    | 6.9     |    0 | 41     |
+ |  Turbo/Hlt2/pRec/IT/Clusters                    |     2490 |    24.9+-5.6    | 56.4    |    0 | 306    |
+ |  Turbo/Hlt2/pRec/Long/MuonIDs                   |     1037 |    10.4+-2.0    | 20.3    |    1 | 131    |
+ |  Turbo/Hlt2/pRec/Long/Protos                    |      972 |     9.7+-1.8    | 18.5    |    0 | 112    |
+ |  Turbo/Hlt2/pRec/Long/RichPIDs                  |      937 |     9.4+-1.8    | 17.7    |    0 | 109    |
+ |  Turbo/Hlt2/pRec/Long/Tracks                    |      972 |     9.7+-1.8    | 18.5    |    0 | 112    |
+ |  Turbo/Hlt2/pRec/Neutral/CaloClusters           |     1656 |    16.6+-3.8    | 38.4    |    0 | 210    |
+ |  Turbo/Hlt2/pRec/Neutral/EcalAdcs               |      100 |       1         |         |      |        |
+ |  Turbo/Hlt2/pRec/Neutral/EcalDigits             |      100 |       1         |         |      |        |
+ |  Turbo/Hlt2/pRec/Neutral/EcalSplitClusters      |       92 |     0.9+-0.3    | 2.5     |    0 | 14     |
+ |  Turbo/Hlt2/pRec/Neutral/Electrons              |      747 |     7.5+-1.6    | 16.3    |    0 | 118    |
+ |  Turbo/Hlt2/pRec/Neutral/HcalAdcs               |      100 |       1         |         |      |        |
+ |  Turbo/Hlt2/pRec/Neutral/HcalDigits             |      100 |       1         |         |      |        |
+ |  Turbo/Hlt2/pRec/Neutral/MergedPi0s             |       46 |     0.5+-0.1    | 1.3     |    0 | 7      |
+ |  Turbo/Hlt2/pRec/Neutral/Photons                |     1188 |    11.9+-2.2    | 22.4    |    0 | 108    |
+ |  Turbo/Hlt2/pRec/Neutral/Protos                 |     1189 |    11.9+-2.6    | 25.8    |    0 | 129    |
+ |  Turbo/Hlt2/pRec/Neutral/PrsAdcs                |      100 |       1         |         |      |        |
+ |  Turbo/Hlt2/pRec/Neutral/PrsDigits              |      100 |       1         |         |      |        |
+ |  Turbo/Hlt2/pRec/Neutral/SpdAdcs                |      100 |       1         |         |      |        |
+ |  Turbo/Hlt2/pRec/Neutral/SpdDigits              |      100 |       1         |         |      |        |
+ |  Turbo/Hlt2/pRec/Neutral/SplitPhotons           |       92 |     0.9+-0.3    | 2.5     |    0 | 14     |
+ |  Turbo/Hlt2/pRec/TT/Clusters                    |     4071 |    40.7+-7.5    | 74.9    |    4 | 441    |
+ |  Turbo/Hlt2/pRec/Velo/Clusters                  |    11629 |   116.3+-20.9   | 208.8   |    0 | 1207   |
+ |  Turbo/Hlt2/pRec/VeloPV/Tracks                  |     1109 |    11.1+-2.9    | 28.6    |    0 | 140    |
+ |  Turbo/Hlt2/pRec/Vertex/PV3D                    |      168 |     1.7+-0.1    | 0.7     |    1 | 4      |
+ |  Turbo/Rec/Summary                              |      100 |       1         |         |      |        |
+ |  Turbo/pPhys/FlavourTags                        |        0 |       0         |         |      |        |
+ |  Turbo/pPhys/P2IntRelations                     |        0 |       0         |         |      |        |
+ |  Turbo/pPhys/PartToRelatedInfoRelations         |        0 |       0         |         |      |        |
+ |  Turbo/pPhys/Particles                          |     1574 |    15.7+-3.4    | 34.4    |    3 | 220    |
+ |  Turbo/pPhys/RecVertices                        |       20 |     0.2+-0.1    | 0.8     |    0 | 4      |
+ |  Turbo/pPhys/Relations                          |      220 |     2.2+-0.2    | 2.4     |    1 | 12     |
+ |  Turbo/pPhys/Vertices                           |      246 |     2.5+-0.2    | 1.9     |    1 | 10     |
+ |  Turbo/pRec/Muon/CustomPIDs                     |        5 |     0.1+-0.0    | 0.3     |    0 | 2      |
+ |  Turbo/pRec/ProtoP/Custom                       |       19 |     0.2+-0.0    | 0.5     |    0 | 2      |
+ |  Turbo/pRec/Rich/CustomPIDs                     |        0 |       0         |         |      |        |
+ |  Turbo/pRec/Track/Custom                        |       10 |     0.1+-0.1    | 0.5     |    0 | 4      |
+ |  Unstripped/RawEvent                            |      600 |       6         |         |      |        |
+ |  Velo/RawEvent                                  |     8700 |      87         |         |      |        |
+ |  pRec/Calo/Electrons                            |     3011 |    30.1+-1.9    | 19.0    |    1 | 118    |
+ |  pRec/Calo/MergedPi0s                           |      206 |     2.1+-0.2    | 2.1     |    0 | 10     |
+ |  pRec/Calo/Photons                              |     5306 |    53.1+-1.8    | 17.7    |   17 | 108    |
+ |  pRec/Calo/SplitPhotons                         |      412 |     4.1+-0.4    | 4.2     |    0 | 20     |
+ |  pRec/Muon/MuonPID                              |     4338 |    43.4+-1.9    | 18.7    |    8 | 131    |
+ |  pRec/ProtoP/Charged                            |     6622 |    66.2+-2.7    | 27.3    |   10 | 171    |
+ |  pRec/ProtoP/Neutrals                           |     5924 |    59.2+-2.1    | 20.9    |   17 | 129    |
+ |  pRec/Rich/PIDs                                 |     6280 |    62.8+-2.6    | 25.6    |   10 | 162    |
+ |  pRec/Track/Best                                |    18333 |   183.3+-10.1   | 101.5   |   36 | 637    |
+ |  pRec/Track/FittedHLT1VeloTracks                |     7016 |    70.2+-2.7    | 27.4    |   12 | 140    |
+ |  pRec/Track/Muon                                |      492 |     4.9+-0.5    | 5.3     |    0 | 28     |
+ |  pRec/Vertex/Primary                            |      168 |     1.7+-0.1    | 0.7     |    1 | 4      |
+ |  pRec/Vertex/V0                                 |      150 |     1.5+-0.1    | 1.3     |    0 | 5      |
+ | *Raw/Prs/Digits                                 |    46747 |   467.5+-18.3   | 183.4   |  117 | 1157   |
+ | *Raw/Spd/Digits                                 |    29494 |   294.9+-11.5   | 115.1   |   76 | 694    |
+ | *Rec/Calo/EcalClusters                          |     8879 |    88.8+-3.2    | 32.1    |   26 | 209    |
+ | *Rec/Calo/EcalSplitClusters                     |      398 |     5.1+-0.5    | 4.0     |    0 | 20     |
+ | *Rec/Calo/Electrons                             |     3011 |    30.1+-1.9    | 19.0    |    1 | 118    |
+ | *Rec/Calo/MergedPi0s                            |      206 |     2.6+-0.2    | 2.0     |    1 | 10     |
+ | *Rec/Calo/Photons                               |     5306 |    53.1+-1.8    | 17.7    |   17 | 108    |
+ | *Rec/Calo/SplitPhotons                          |      412 |     5.3+-0.5    | 4.0     |    2 | 20     |
+ | *Rec/Track/Best                                 |    18333 |   183.3+-10.1   | 101.5   |   36 | 637    |
+ | *Rec/Track/Muon                                 |      492 |     5.4+-0.6    | 5.3     |    1 | 28     |
+ +--------------------------------------------------------------------------------------------------------+
+   Analysed 99 events

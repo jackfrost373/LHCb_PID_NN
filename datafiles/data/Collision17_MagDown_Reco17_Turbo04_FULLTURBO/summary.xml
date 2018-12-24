@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<summary xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" xsi:noNamespaceSchemaLocation="$XMLSUMMARYBASEROOT/xml/XMLSummary.xsd">
+	<success>True</success>
+	<step>finalize</step>
+	<usage>
+		<stat unit="KB" useOf="MemoryMaximum">3451888.0</stat>
+	</usage>
+	<input>
+		<file GUID="007B0778-6DA4-E711-B4AB-00266CFF0234" name="PFN:00066593_00000135_2.fullturbo.dst" status="part">100</file>
+	</input>
+	<output />
+	<counters>
+		<counter name="EcalClust/#clusters =&gt; '/Event/Rec/Calo/EcalClusters'">8879</counter>
+		<counter name="EcalCovar/#Clusters from 'Rec/Calo/EcalClusters'">8879</counter>
+		<counter name="UnpackMuonTracks/# Unpacked Tracks">492</counter>
+		<counter name="UnpackTrack/# Unpacked Tracks">18333</counter>
+		<counter name="SplitClustersRec/Rec/Calo/EcalClusters=&gt;Rec/Calo/EcalSplitClusters">398</counter>
+		<counter name="CounterSummarySvc/handled">101</counter>
+	</counters>
+	<lumiCounters />
+</summary>
