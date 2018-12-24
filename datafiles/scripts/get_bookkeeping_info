@@ -1,0 +1,18 @@
+#!/bin/bash 
+# from lxplus:/afs/cern.ch/user/i/ibelyaev/public/scripts
+
+# =============================================================================
+if !( `which lb-run` -c x86_64-slc6-gcc49-opt LHCbDirac/prod grid-proxy-info -e ); then
+    echo 'Valid GRID proxy is required'
+    exit 3  
+fi
+
+##`which lb-run` LHCbDirac/latest get_bookkeeping_info4.py  $*
+
+## from now use the renamed (and improved) script from LHCbDirac:
+`which lb-run` -c x86_64-slc6-gcc49-opt LHCbDirac/prod dirac-bookkeeping-decays-path $*
+
+
+# =============================================================================
+# The END 
+# =============================================================================

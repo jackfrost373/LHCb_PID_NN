@@ -1,0 +1,76 @@
+#-- GAUDI jobOptions generated on Mon Dec 24 21:34:50 2018
+#-- Contains event types : 
+#--   11144001 - 3427 files - 9309617 events - 2638.30 GBytes
+
+
+#--  Extra information about the data processing phases:
+
+
+#--  Processing Pass Step-137501 
+
+#--  StepId : 137501 
+#--  StepName : TCK-0x62661709 (HLT2) Flagged for 2017 - DIGI 
+#--  ApplicationName : Moore 
+#--  ApplicationVersion : v26r6p1 
+#--  OptionFiles : $APPCONFIGOPTS/Moore/MooreSimProductionForSeparateL0AppStep2015.py;$APPCONFIGOPTS/Conditions/TCK-0x62661709.py;$APPCONFIGOPTS/Moore/DataType-2017.py;$APPCONFIGOPTS/Moore/MooreSimProductionHlt2.py 
+#--  DDDB : dddb-20170721-3 
+#--  CONDDB : sim-20180411-vc-md100 
+#--  ExtraPackages : AppConfig.v3r369 
+#--  Visible : Y 
+
+
+#--  Processing Pass Step-133515 
+
+#--  StepId : 133515 
+#--  StepName : TCK-0x51611709 (HLT1) Flagged for 2017 - DIGI 
+#--  ApplicationName : Moore 
+#--  ApplicationVersion : v26r6p1 
+#--  OptionFiles : $APPCONFIGOPTS/Moore/MooreSimProductionForSeparateL0AppStep2015.py;$APPCONFIGOPTS/Conditions/TCK-0x51611709.py;$APPCONFIGOPTS/Moore/DataType-2017.py;$APPCONFIGOPTS/Moore/MooreSimProductionHlt1.py 
+#--  DDDB : dddb-20170721-3 
+#--  CONDDB : sim-20180411-vc-md100 
+#--  ExtraPackages : AppConfig.v3r356 
+#--  Visible : N 
+
+
+#--  Processing Pass Step-133514 
+
+#--  StepId : 133514 
+#--  StepName : L0 emulation for 2017 - TCK 0x1709 - DIGI 
+#--  ApplicationName : Moore 
+#--  ApplicationVersion : v26r6p1 
+#--  OptionFiles : $APPCONFIGOPTS/L0App/L0AppSimProduction.py;$APPCONFIGOPTS/L0App/L0AppTCK-0x1709.py;$APPCONFIGOPTS/L0App/ForceLUTVersionV8.py;$APPCONFIGOPTS/L0App/DataType-2017.py 
+#--  DDDB : dddb-20170721-3 
+#--  CONDDB : sim-20180411-vc-md100 
+#--  ExtraPackages : AppConfig.v3r356 
+#--  Visible : N 
+
+
+#--  Processing Pass Step-133533 
+
+#--  StepId : 133533 
+#--  StepName : Digi14c for 2015 - 25ns spillover 
+#--  ApplicationName : Boole 
+#--  ApplicationVersion : v30r3 
+#--  OptionFiles : $APPCONFIGOPTS/Boole/Default.py;$APPCONFIGOPTS/Boole/EnableSpillover.py;$APPCONFIGOPTS/Boole/DataType-2015.py;$APPCONFIGOPTS/Boole/Boole-SetOdinRndTrigger.py 
+#--  DDDB : dddb-20170721-3 
+#--  CONDDB : sim-20180411-vc-md100 
+#--  ExtraPackages : AppConfig.v3r338 
+#--  Visible : N 
+
+
+#--  Processing Pass Step-133709 
+
+#--  StepId : 133709 
+#--  StepName : Reco17 for MC 2017 - LDST 
+#--  ApplicationName : Brunel 
+#--  ApplicationVersion : v52r6p1 
+#--  OptionFiles : $APPCONFIGOPTS/Brunel/DataType-2017.py;$APPCONFIGOPTS/Brunel/MC-WithTruth.py;$APPCONFIGOPTS/Brunel/SplitRawEventOutput.4.3.py 
+#--  DDDB : dddb-20170721-3 
+#--  CONDDB : sim-20180411-vc-md100 
+#--  ExtraPackages : AppConfig.v3r338;SQLDDDB.v7r10 
+#--  Visible : Y 
+
+from Gaudi.Configuration import * 
+from GaudiConf import IOHelper
+IOHelper('ROOT').inputFiles(['LFN:/lhcb/MC/2017/LDST/00083523/0000/00083523_00000001_5.ldst'], clear=True)
+
