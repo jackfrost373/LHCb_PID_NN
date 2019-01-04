@@ -8,7 +8,7 @@ lb-run DaVinci/v44r5 gaudirun.py options/davinci_TURCAL_pid.py data/Collision17_
 # Run over local MC
 #lb-run DaVinci/v44r5 gaudirun.py options/davinci_MC_pid.py data/MC17_MagDown_Nu1.6-25ns-Pythia8_Sim09e_Reco17_11144001/IOhelper.py
 
-mv *.root output/
+#mv *.root output/
 
 
 
