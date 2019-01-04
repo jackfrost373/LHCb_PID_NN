@@ -34,7 +34,11 @@ tupletools.append("TupleToolTrackTime")        # OT track time
 
 for i,branch in enumerate([dtt_Lb.proton, dtt_Dz_k.Kaon, dtt_Dz_pi.pion]) :
   for tt in tupletools :
-    branch.addTupleTool(tt+"/"+tt+str(i))
+    tmp = branch.addTupleTool(tt+"/"+tt+str(i))
+  
+    if (tt=="TupleToolANNPID") :
+      tmp.ANNPIDTunes = ["MC12TuneV4","MC15TuneV1","MC15TuneDNNV1","MC15TuneFLAT4dV1","MC15TuneCatBoostV1"]
+      tmp.PIDTypes = ["Pion","Kaon","Proton"]
 
   #hybridtool = branch.addTupleTool('LoKi::Hybrid::TupleTool')
   #hybridtool.Variables = {'ETA' : '0.5 * log( (P+PZ)/(P-PZ) )' ,
@@ -57,7 +61,7 @@ DaVinci().DataType = '2017'
 DaVinci().RootInTES = '/Event/Turbo'
 DaVinci().TupleFile = "davinci_TURCAL_PID.root"
 DaVinci().HistogramFile = 'davinci_TURCAL_PID-histos.root'
-DaVinci().EvtMax = 2000
+DaVinci().EvtMax = -1
 DaVinci().PrintFreq = 100
 DaVinci().EventPreFilters = [ hltfilter ]
 DaVinci().appendToMainSequence([dtt_Lb, dtt_Dz_k, dtt_Dz_pi])
