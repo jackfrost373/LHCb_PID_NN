@@ -26,7 +26,11 @@ tupletools.append("TupleToolMCTruth")          # MC Truth information
 #tupletools.append("TupleToolMCBackgroundInfo") # BKGCAT information
 
 for tt in tupletools :
-  dtt_pi.pi.addTupleTool(tt)
+  tmp = dtt_pi.pi.addTupleTool(tt)
+
+  if (tt=="TupleToolANNPID") :
+    tmp.ANNPIDTunes = ["MC12TuneV4","MC15TuneV1","MC15TuneDNNV1","MC15TuneFLAT4dV1","MC15TuneCatBoostV1"]
+    tmp.PIDTypes = ["Pion","Kaon","Proton"]
 
 
 from Configurables import DaVinci
@@ -36,7 +40,7 @@ DaVinci().Simulation = True
 DaVinci().Lumi = False
 DaVinci().TupleFile = "davinci_MC_PID.root"
 DaVinci().HistogramFile = 'davinci_MC_PID-histos.root'
-DaVinci().EvtMax = 2000
+DaVinci().EvtMax = -1
 DaVinci().PrintFreq = 100
 DaVinci().appendToMainSequence([dtt_pi])
 DaVinci().DDDBtag  = dddbtag 
