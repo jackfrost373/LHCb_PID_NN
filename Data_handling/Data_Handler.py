@@ -15,7 +15,7 @@ kaon_tracking = kaon_dataframe[['TrackP', 'TrackPt', 'TrackChi2PerDof', 'TrackLi
 kaon_RICH = kaon_dataframe[['RichUsedAero', 'RichUsedR1Gas', 'RichUsedR2Gas', 'RichAboveMuThres', 'RichAboveKaThres', 'RichDLLe', 'RichDLLmu', 'RichDLLmu', 'RichDLLk', 'RichDLLp', 'RichDLLbt']]
 kaon_CALO = kaon_dataframe[['EcalPIDe', 'EcalPIDmu', 'HcalPIDe', 'HcalPIDmu', 'PrsPIDe', 'InAccBrem', 'BremPIDe']]
 kaon_VELO = kaon_dataframe[['VeloCharge']]
-#kaon_data = pd.concat([kaon_tracking, kaon_RICH, kaon_CALO, kaon_VELO], axis = 1)
+kaon_data = pd.concat([kaon_tracking, kaon_RICH, kaon_CALO, kaon_VELO], axis = 1)
 kaon_hdf5 = kaon_data.to_hdf('kaon_data.h5', key = 'kaon', format = 'table')
 
 # Extract neural network data for pions.
