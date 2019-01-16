@@ -6,7 +6,8 @@ import matplotlib.pyplot as plt
 
 
 # Read tree as pandas dataframe using uproot
-tfile = uproot.open('../datafiles/output/davinci_MC_PID.root')
+#tfile = uproot.open('../datafiles/output/davinci_MC_PID.root')
+tfile = uproot.open('/home/Shared/lhcbdata/davinci_MC_PID.root')
 tree = tfile["PiTree/DecayTree"]
 df = tree.pandas.df()
 #print(df.head())

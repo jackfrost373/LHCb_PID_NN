@@ -1,0 +1,12 @@
+This is a classifier that is created to find the quality of a wine based on its chemical properties. Therea are 11 
+input variables used for classification. The result is on a rating scale between 0 and 10 where each rating point corresponds
+to one of 10 output nodes.
+
+The network performs with an accuray of around 53%, this is quite unimpressive since neraly all wines are rated between 5 and 7.
+Then again we have no comparison values for this data set so it might still be a decent result, even though we didn't play
+around with the architecture much.
+
+The input is given in form of numpy arrays, so is the output given as a numpy array, hence it would/should also work on our
+actual LHCb data and can be considered a prototype for our final network
+
+Sleep well.

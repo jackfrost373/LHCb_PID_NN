@@ -2,7 +2,8 @@
 import ROOT
 
 # get the TTree
-tfile = ROOT.TFile.Open('../datafiles/output/davinci_MC_PID.root')
+#tfile = ROOT.TFile.Open('../datafiles/output/davinci_MC_PID.root')
+tfile = ROOT.TFile.Open('/home/Shared/lhcbdata/davinci_MC_PID.root')
 tree = tfile.Get("PiTree/DecayTree")
 
 # instantiate TMVA factory
