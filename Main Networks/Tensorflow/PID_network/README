@@ -1,0 +1,5 @@
+This is the actual particle identification network
+
+Code is running, data should be imported correctly, but it's currently not imporving. We hope that this is only due to
+insufficient data, otherwise we might have to redesign the entire thing (we should probably do that anyways
+at some point for efficiency purposes)
