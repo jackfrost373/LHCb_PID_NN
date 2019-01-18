@@ -12,9 +12,13 @@ RICH = df[['RichUsedAero', 'RichUsedR1Gas', 'RichUsedR2Gas', 'RichAboveMuThres',
 CALO = df[['EcalPIDe', 'EcalPIDmu', 'HcalPIDe', 'HcalPIDmu', 'PrsPIDe', 'InAccBrem', 'BremPIDe']] # Desired CALO variable.
 VELO = df[['VeloCharge']] # Desired VELO variable.
 ID = df[['pi_TRUEID']] # Particle IDs, known from simulation.
+#ID_kaon_pion = ID[(ID.pi_TRUEID == 211) | (ID.pi_TRUEID == -211) | (ID.pi_TRUEID == 321) | (ID.pi_TRUEID == -321)] # Picks out kaons and pions.
+#ID_kaon_pion = ID_kaon_pion.replace([211, -211, 321, -321], [1, 1, 0, 0])
 data = pd.concat([tracking, RICH, CALO, VELO, ID], axis = 1) # Strings all variables and the particle IDs together into one dataframe.
 
 # Filtering trick from https://cmdlinetips.com/2018/02/how-to-subset-pandas-dataframe-based-on-values-of-a-column/
-data_kaon_pion = data[(data.pi_TRUEID == 211) | (data.pi_TRUEID == -211) | (data.pi_TRUEID == 321) | (data.pi_TRUEID == -321)]
+data_kaon_pion = data[(data.pi_TRUEID == 211) | (data.pi_TRUEID == -211) | (data.pi_TRUEID == 321) | (data.pi_TRUEID == -321)] # Picks out kaons and pions
+data_kaon_pion[['pi_TRUEID']] = data_kaon_pion[['pi_TRUEID']].replace([211, -211, 321, -321], [1, 1, 0, 0]) # replace PIDs with 0 and 1.
+#print(data_kaon_pion[['pi_TRUEID']])
 
-data_kaon_pion_hdf5 = data_kaon_pion.to_hdf('particle_data_big.h5', key = 'kaon_pion', format = 'table')
+#data_kaon_pion_hdf5 = data_kaon_pion.to_hdf('particle_data_big.h5', key = 'kaon_pion', format = 'table')
