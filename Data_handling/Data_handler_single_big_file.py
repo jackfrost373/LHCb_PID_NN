@@ -13,17 +13,16 @@ RICH = df[['RichUsedAero', 'RichUsedR1Gas', 'RichUsedR2Gas', 'RichAboveMuThres',
 CALO = df[['EcalPIDe', 'EcalPIDmu', 'HcalPIDe', 'HcalPIDmu', 'PrsPIDe', 'InAccBrem', 'BremPIDe']] # Desired CALO variable.
 VELO = df[['VeloCharge']] # Desired VELO variable.
 ID = df[['pi_TRUEID']] # Particle IDs, known from simulation.
-#ID_kaon_pion = ID[(ID.pi_TRUEID == 211) | (ID.pi_TRUEID == -211) | (ID.pi_TRUEID == 321) | (ID.pi_TRUEID == -321)] # Picks out kaons and pions.
-#ID_kaon_pion = ID_kaon_pion.replace([211, -211, 321, -321], [1, 1, 0, 0])
 data = pd.concat([tracking, RICH, CALO, VELO, ID], axis = 1) # Strings all variables and the particle IDs together into one dataframe.
 
+data_kaon_pion = data[(data.pi_TRUEID == -211) | (data.pi_TRUEID == 211) | (data.pi_TRUEID == -321) | (data.pi_TRUEID == 321)]
+print(data_kaon_pion.shape)
 # replace each value by what it should be
 # TAKE CARE: OTHER PARTICLES NOT REMOVED YET, SO SOME PARTICLES WITH ACTUAL ID 1/0 MIGHT BE HIDING
-data = data.replace(to_replace= 211, value= 1)
-data = data.replace(to_replace= -211, value= 1)
-data = data.replace(to_replace= 321, value= 1)
-data = data.replace(to_replace= -321, value= 1)
-print(data.pi_TRUEID)
-#print(data_kaon_pion[['pi_TRUEID']])
+data_kaon_pion = data_kaon_pion.replace(to_replace= 211, value= 1) # Pions get the ID 1.
+data_kaon_pion = data_kaon_pion.replace(to_replace= -211, value= 1) # Antipions get ID 1.
+data_kaon_pion = data_kaon_pion.replace(to_replace= 321, value= 0) # Kaons get ID 0.
+data_kaon_pion = data_kaon_pion.replace(to_replace= -321, value= 0) # Antikaons get ID 0.
+print(data_kaon_pion[['pi_TRUEID']])
 
-#data_kaon_pion_hdf5 = data_kaon_pion.to_hdf('particle_data_big.h5', key = 'kaon_pion', format = 'table')
+data_kaon_pion_hdf5 = data_kaon_pion.to_hdf('particle_data_big_kaon0_pion1.h5', key = 'kaon_pion', format = 'table')
