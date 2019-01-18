@@ -2,6 +2,7 @@
 import uproot
 import pandas as pd
 
+print("running")
 file = uproot.open('/home/Shared/lhcbdata/ganga/20/1/output/davinci_MC_PID.root') # Opens a .root file with simulated data.
 
 tree = file["PiTree/DecayTree"] # Takes the tree from this .root file.
@@ -16,9 +17,13 @@ ID = df[['pi_TRUEID']] # Particle IDs, known from simulation.
 #ID_kaon_pion = ID_kaon_pion.replace([211, -211, 321, -321], [1, 1, 0, 0])
 data = pd.concat([tracking, RICH, CALO, VELO, ID], axis = 1) # Strings all variables and the particle IDs together into one dataframe.
 
-# Filtering trick from https://cmdlinetips.com/2018/02/how-to-subset-pandas-dataframe-based-on-values-of-a-column/
-data_kaon_pion = data[(data.pi_TRUEID == 211) | (data.pi_TRUEID == -211) | (data.pi_TRUEID == 321) | (data.pi_TRUEID == -321)] # Picks out kaons and pions
-data_kaon_pion[['pi_TRUEID']] = data_kaon_pion[['pi_TRUEID']].replace([211, -211, 321, -321], [1, 1, 0, 0]) # replace PIDs with 0 and 1.
+# replace each value by what it should be
+# TAKE CARE: OTHER PARTICLES NOT REMOVED YET, SO SOME PARTICLES WITH ACTUAL ID 1/0 MIGHT BE HIDING
+data = data.replace(to_replace= 211, value= 1)
+data = data.replace(to_replace= -211, value= 1)
+data = data.replace(to_replace= 321, value= 1)
+data = data.replace(to_replace= -321, value= 1)
+print(data.pi_TRUEID)
 #print(data_kaon_pion[['pi_TRUEID']])
 
 #data_kaon_pion_hdf5 = data_kaon_pion.to_hdf('particle_data_big.h5', key = 'kaon_pion', format = 'table')
