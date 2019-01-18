@@ -2,13 +2,14 @@ import tensorflow as tf
 import pandas
 import numpy as np
 from tensorflow import keras
+def sigmoid(x):
+  return 1 / (1 + np.exp(-x))
 
 CATEBORIES = ["Pion", "Kaon"]
 X = pandas.read_hdf("/home/felix/PycharmProjects/tensorflow_network/particle_data_big.h5")
-
-y = 0
-
 y = X.pi_TRUEID
+X= X.drop("pi_TRUEID", axis = 1)
+
 print(X)
 print(y)
 y = np.array(y, ndmin=2).T
@@ -17,22 +18,28 @@ for i in range(len(y)):
     if y[i] == (321):
         y[i] = 0
     elif y[i] == (-321):
-        y[i] = 1
+        y[i] = 0
     elif y[i] == (211):
-        y[i] = 2
+        y[i] = 1
     elif y[i] == (-211):
-        y[i] = 3
+        y[i] = 1
 
-
-
+test_X = X
+X = tf.keras.utils.normalize(
+        X,
+        axis=-1,
+        order=2
+        )
 
 print(X)
 print(y)
 
 model = keras.Sequential([
-    keras.layers.Dense(input_shape=(31,), units=2),
-    keras.layers.Dense(100, activation=tf.nn.relu),
-    keras.layers.Dense(4, activation=tf.nn.sigmoid)
+    keras.layers.Dense(input_shape=(30,), units=2),
+    keras.layers.Dense(50, activation=tf.nn.relu),
+    keras.layers.Dense(30, activation=tf.nn.relu),
+    keras.layers.Dense(10, activation=tf.nn.relu),
+    keras.layers.Dense(2, activation=tf.nn.sigmoid)
 ])
 
 # sets optimization function, learning rate and loss function for network
@@ -43,7 +50,27 @@ model.compile(optimizer= tf.train.AdamOptimizer(),
 # trains the network for 1000 epochs with 500 iterations per epoch
 model.fit(X,
           y,
-          epochs = 100,
-          batch_size=10000,
+          epochs = 1000,
+          batch_size=1000,
           shuffle=True,
+          validation_split=0.1
           )
+
+predictions = model.predict(X)
+# print(predictions)
+k= 0
+confusion_matrix = []
+for i in range(2):
+    confusion_matrix.append([])
+    for j in range(2):
+        confusion_matrix[i].append(0)
+
+
+for i in predictions:
+   prediction = np.argmax(predictions[k])
+   real_result = y[k][0]
+   confusion_matrix[prediction][real_result]= confusion_matrix[prediction][real_result]+1
+   k = k + 1
+#confusion_matrix[0][9] = 'test'
+confusion_matrix = np.array(confusion_matrix)
+print(confusion_matrix)
