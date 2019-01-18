@@ -4,28 +4,35 @@ import numpy as np
 from tensorflow import keras
 
 CATEBORIES = ["Pion", "Kaon"]
-X_pion = pandas.read_hdf("/home/felix/PycharmProjects/tensorflow_network/particle_data _prelim.h5", 'pion')
-X_kaon = pandas.read_hdf("/home/felix/PycharmProjects/tensorflow_network/particle_data _prelim.h5", 'kaon')
-X_pion = np.array(X_pion)
-X_kaon = np.array(X_kaon)
-y=[]
-for i in X_kaon:
-   y.append(0)
-for i in X_pion:
-   y.append(1)
-y = np.array(y, ndmin=2).T
+X = pandas.read_hdf("/home/felix/PycharmProjects/tensorflow_network/particle_data_big.h5")
 
-X = np.concatenate((X_pion, X_kaon))
+y = 0
+
+y = X.pi_TRUEID
+print(X)
+print(y)
+y = np.array(y, ndmin=2).T
+X = np.array(X, ndmin=2)
+for i in range(len(y)):
+    if y[i] == (321):
+        y[i] = 0
+    elif y[i] == (-321):
+        y[i] = 1
+    elif y[i] == (211):
+        y[i] = 2
+    elif y[i] == (-211):
+        y[i] = 3
+
+
 
 
 print(X)
 print(y)
 
 model = keras.Sequential([
-    keras.layers.Dense(30, activation=tf.nn.relu),
-    keras.layers.Dense(16, activation=tf.nn.relu),
-    keras.layers.Dense(16, activation=tf.nn.relu),
-    keras.layers.Dense(2, activation=tf.nn.sigmoid)
+    keras.layers.Dense(input_shape=(31,), units=2),
+    keras.layers.Dense(100, activation=tf.nn.relu),
+    keras.layers.Dense(4, activation=tf.nn.sigmoid)
 ])
 
 # sets optimization function, learning rate and loss function for network
@@ -37,6 +44,6 @@ model.compile(optimizer= tf.train.AdamOptimizer(),
 model.fit(X,
           y,
           epochs = 100,
-          batch_size=1000,
+          batch_size=10000,
           shuffle=True,
           )
