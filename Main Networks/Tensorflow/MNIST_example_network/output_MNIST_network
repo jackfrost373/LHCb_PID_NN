@@ -1,0 +1,54 @@
+/home/felix/PycharmProjects/tensorflow_network/venv/bin/python /home/felix/PycharmProjects/tensorflow_network/venv/MNIST_network.py
+Epoch 1/20
+2019-01-16 03:07:35.443191: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+60000/60000 [==============================] - 3s 42us/step - loss: 0.5002 - acc: 0.8232
+Epoch 2/20
+60000/60000 [==============================] - 2s 39us/step - loss: 0.3734 - acc: 0.8648
+Epoch 3/20
+60000/60000 [==============================] - 2s 40us/step - loss: 0.3373 - acc: 0.8762
+Epoch 4/20
+60000/60000 [==============================] - 2s 39us/step - loss: 0.3156 - acc: 0.8822
+Epoch 5/20
+60000/60000 [==============================] - 2s 39us/step - loss: 0.2964 - acc: 0.8905
+Epoch 6/20
+60000/60000 [==============================] - 2s 38us/step - loss: 0.2831 - acc: 0.8953
+Epoch 7/20
+60000/60000 [==============================] - 2s 39us/step - loss: 0.2698 - acc: 0.9000
+Epoch 8/20
+60000/60000 [==============================] - 2s 39us/step - loss: 0.2598 - acc: 0.9025
+Epoch 9/20
+60000/60000 [==============================] - 2s 40us/step - loss: 0.2479 - acc: 0.9066
+Epoch 10/20
+60000/60000 [==============================] - 2s 39us/step - loss: 0.2424 - acc: 0.9083
+Epoch 11/20
+60000/60000 [==============================] - 2s 39us/step - loss: 0.2329 - acc: 0.9112
+Epoch 12/20
+60000/60000 [==============================] - 2s 39us/step - loss: 0.2265 - acc: 0.9156
+Epoch 13/20
+60000/60000 [==============================] - 2s 39us/step - loss: 0.2186 - acc: 0.9173
+Epoch 14/20
+60000/60000 [==============================] - 2s 39us/step - loss: 0.2131 - acc: 0.9184
+Epoch 15/20
+60000/60000 [==============================] - 2s 39us/step - loss: 0.2063 - acc: 0.9213
+Epoch 16/20
+60000/60000 [==============================] - 2s 39us/step - loss: 0.2017 - acc: 0.9243
+Epoch 17/20
+60000/60000 [==============================] - 2s 39us/step - loss: 0.1961 - acc: 0.9254
+Epoch 18/20
+60000/60000 [==============================] - 2s 39us/step - loss: 0.1926 - acc: 0.9278
+Epoch 19/20
+60000/60000 [==============================] - 2s 39us/step - loss: 0.1870 - acc: 0.9291
+Epoch 20/20
+60000/60000 [==============================] - 2s 39us/step - loss: 0.1802 - acc: 0.9319
+10000/10000 [==============================] - 0s 31us/step
+Test accuracy: 0.8891
+(1, 28, 28)
+[[2.0102885e-11 5.7722341e-11 6.4005148e-11 1.5304870e-12 7.9088430e-11
+  1.4289641e-05 9.2488186e-09 2.1789894e-03 8.8719580e-11 9.9780673e-01]]
+
+Process finished with exit code 0
+
+# the last array displayed (underneath the 'Test accuracy) displays an example run for the first image, which should
+# light up node 9, which it does with near certainty (99.8%), so it seems to be working well. The accuracy after training
+# on an unknown data set is 89% (it identifies various kinds of clothes)
+
