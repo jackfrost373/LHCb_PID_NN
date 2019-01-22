@@ -1,0 +1,79 @@
+import uproot
+import pandas as pd
+import numpy as np
+from sklearn.linear_model import Perceptron
+import matplotlib.pyplot as plt
+from sklearn.metrics import roc_curve, auc
+tfile = uproot.open('/home/Shared/lhcbdata/davinci_MC_PID.root')
+tree = tfile["PiTree/DecayTree"]
+df = tree.pandas.df()
+df['absid'] = df['pi_TRUEID'].abs()
+print(df['absid'].value_counts())
+crit_global = (df['pi_TRACK_time_err'] > 0.1) & (df['pi_P'] > 1200)
+crit_types  = (abs(df['pi_TRUEID']) == 211) | (abs(df['pi_TRUEID']) == 321)
+dfsel = df[crit_global & crit_types]
+attributesTRACK = ['TrackP','TrackPt','TrackChi2PerDof','TrackNumDof','TrackLikelihood','TrackFitTChi2','TrackFitTNDoF','TrackFitMatchChi2', 'TrackGhostProbability','TrackCloneDist','TrackFitVeloChi2','TrackFitVeloNDoF',]
+attributesRICH = ['RichUsedAero', 'RichUsedR1Gas', 'RichUsedR2Gas', 'RichAboveMuThres', 'RichAboveKaThres']
+attributesDLLS = ['RichDLLe','RichDLLmu','RichDLLk','RichDLLp','RichDLLbt']
+attributesCALO = ['EcalPIDe', 'EcalPIDmu', 'HcalPIDe', 'HcalPIDmu', 'PrsPIDe', 'InAccBrem', 'BremPIDe']
+attributesOther = ['VeloCharge', 'pi_TRACK_time','pi_TRACK_time_err']
+attributes = attributesTRACK + attributesRICH + attributesDLLS + attributesCALO + attributesOther
+print(len(attributes)
+X = dfsel.loc[ :, attributes ]
+y = dfsel['absid'].astype('category')
+
+###Cross-Validation###
+#############################################
+from sklearn.model_selection import KFold
+kf=KFold(n_splits=2)         #select no of splits
+for train_index, test_index in kf.split(X):                              #this is used instead of standard scaler
+ #   print("TRAIN:", train_index, "TEST:", test_index)
+    X_train, X_test = X.iloc[train_index], X.iloc[test_index]
+    y_train, y_test = y.iloc[train_index], y.iloc[test_index]
+############################################
+
+##
+print("Training...")
+akk=(len(attributes),int(len(attributes)-2), 10)
+from sklearn.neural_network import MLPClassifier
+mlp = MLPClassifier(hidden_layer_sizes=akk,
+                    activation='relu', solver='adam',tol=0.001 , max_iter=100,
+                    verbose=1., shuffle=True ,learning_rate='constant',learning_rate_init=0.002,n_iter_no_change=100)
+
+###Cross-Validation###
+###########################################
+for train_indices, test_indices in kf.split(X):                    #no of splits on dataset
+    mlp.fit(X.iloc[train_indices], y.iloc[train_indices])
+    print(mlp.score(X.iloc[test_indices], y.iloc[test_indices]))
+###########################################
+##
+print("Training set score: %f" % mlp.score(X_train, y_train))
+print("Test set score: %f" % mlp.score(X_test, y_test))
+
+predictions=mlp.predict(X_test)
+probabilities = mlp.predict_proba(X_test) # gives list of [prob_pion, prob_kaon]
+class_var = np.array( [ probabilities[i][0] for i in range(len(y_test)) ] )
+
+###ROC-Curve&evaluation###
+##########################################
+y_labels = np.array([y_test[:][i] for i in range(len(y_test)) ] ) #Binarizes
+y_labels_b = (y_labels==211).astype(int)                          #  the data
+
+
+from sklearn.metrics import classification_report, confusion_matrix
+print("Confusion matrix:")
+print(confusion_matrix(y_test,predictions))
+print("Classification report:")
+print(classification_report(y_test,predictions))
+print(predictions, )#)
+
+fpr,tpr,thresholds = roc_curve(y_labels_b,class_var)
+AUCC=auc(fpr,tpr)
+plt.figure(1)
+plt.plot([0, 1], [0, 1], 'k--')
+plt.plot(fpr, tpr, label='SKlearn (SKlearn = {:.3f})'.format(AUCC))
+plt.xlabel('False positive rate')
+plt.ylabel('True positive rate')
+plt.title('ROC curve')
+plt.legend(loc='best')
+plt.show()
