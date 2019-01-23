@@ -54,7 +54,7 @@ model = keras.Sequential([
     keras.layers.Dense(50, activation=tf.nn.leaky_relu),
     keras.layers.Dense(30, activation=tf.nn.leaky_relu),
     keras.layers.Dense(10, activation=tf.nn.leaky_relu),
-    keras.layers.Dense(2, activation=tf.nn.sigmoid)
+    keras.layers.Dense(2, activation=tf.nn.softmax)
 ])
 
 tensorboard = TensorBoard(log_dir='logs/{}'.format(NAME))
