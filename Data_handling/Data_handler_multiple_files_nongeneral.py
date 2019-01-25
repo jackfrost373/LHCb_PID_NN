@@ -25,4 +25,4 @@ for x in file_numbers: # Loops through all the files.
     data_kaon_pion = data_kaon_pion.replace(to_replace= -321, value= 0) # Antikaons get ID 0.
     total_data_kaon_pion = pd.concat([total_data_kaon_pion, data_kaon_pion], axis = 0) # Links the data from one file to that of the files before it.
     print('File '+number+ ': done') # To see progress during the process.
-total_data_kaon_pion_hdf5 = total_data_kaon_pion.to_hdf('particle_data_chungus_kaon0_pion1.h5', key = 'kaon_pion', format = 'table')
+total_data_kaon_pion_hdf5 = total_data_kaon_pion.to_hdf('/home/Shared/students/particle_data_chungus_kaon0_pion1.h5', key = 'kaon_pion', format = 'table')
